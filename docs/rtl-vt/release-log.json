@@ -1,50 +1,83 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "project": "rtl-vt",
   "entries": [
     {
-      "release_id": "rtl-vt-visual-proof-2026-04-17",
-      "timestamp": "2026-04-17T13:58:31+03:00",
+      "release_id": "rtl-vt-real-arabic-font-2026-04-17",
+      "timestamp": "2026-04-17T14:45:00+03:00",
       "status": "completed",
-      "summary": "Captured decisive Arabic RTL screenshot and stored reproducible evidence artifacts.",
+      "summary": "Replaced placeholder PSF with a real Arabic 8x16 font rasterised from KacstOne Bold; captured a decisive screenshot showing the phrase \"salaam arabi\" (salutation in Arabic) printed three times right-anchored, proving end-to-end RTL-VT rendering.",
       "changes": [
-        "Updated visual_runner_wsl.sh to render one Arabic byte line in RTL mode and the same line in LTR mode for visual comparison.",
-        "Captured decisive screenshot files rtlvt-arabic-rtl-decisive.(ppm|png).",
-        "Generated rtlvt-arabic-rtl-evidence.json and updated visual-run-result.json."
+        "Rewrote tools/rtl-vt/generate_psf2.py to build a valid PSF2 v0 header (magic 72b54a86, 256 glyphs, charsize=16, width=8, height=16) and render each glyph from a system TTF via Pillow (ASCII from DejaVu Sans Mono Bold, Arabic from KacstOne Bold).",
+        "Regenerated drivers/video/console/fonts/arab-rtl-kbd-8x16.psf (sha256 872b4612...); glyph slots for seen lam alef meem ayn ra ba ya now contain legible Arabic bitmaps.",
+        "Cleaned visual_runner_wsl.sh: suppresses kernel console output on tty1 (console=ttyS0 only, loglevel=0, quiet), regenerates the PSF deterministically each run, prints the decisive Arabic phrase three times in natural byte order, and relies on the active RTL console mode to right-anchor the phrase.",
+        "Captured new decisive artifacts: rtlvt-arabic-rtl-decisive.(png|ppm) with clear right-anchored Arabic glyphs and no kernel boot noise."
       ],
+      "phrase": {
+        "ascii_keys": "SGHL UVFD",
+        "bytes_hex": "0x53 0x47 0x48 0x4C 0x20 0x55 0x56 0x46 0x44",
+        "logical_reading_rtl": "salaam arabi",
+        "meaning": "greeting / Arabic peace"
+      },
       "artifact_manifest": "docs/rtl-vt/artifact-manifest.json",
+      "artifacts_sha256": {
+        "screenshot_png": "68AE60765C0D9D2F92ACA4D7479FDB6B00CF419AE148F8008E8C8026D4F94C15",
+        "screenshot_ppm": "EA252C6A488B7AC94B40E45C8FC42CB95CA3C50AC369ACC69BF40F16FA5EC906",
+        "psf_font": "872B461257B6A86B45B86B235548A55BB932219DA8B2C460C978B1A9F194DD6D",
+        "psf_generator": "A89FF9A96995E10FF2CB53032364E4F6FA1671DC095F69E4148E53A4DEE48B41",
+        "bzImage": "B4EF1F698BE042A36405EA3232AB1B7533722789847C966184BA5D5B733FB026"
+      },
       "verification": {
         "serial_markers": [
-          "RTLVT_RTL_LINE_DONE",
+          "RTLVT_INIT_STARTED",
           "RTLVT_LTR_LINE_DONE",
+          "RTLVT_RTL_LINE_DONE",
           "RTLVT_ARABIC_LINE_EMITTED",
           "RTLVT_INIT_DONE"
         ],
-        "result_file": "docs/rtl-vt/screenshots/visual-run-result.json"
+        "right_anchor_columns": [70, 78],
+        "result_file": "docs/rtl-vt/visual-run-result.json"
+      },
+      "architecture_compliance": {
+        "byte_indexed_glyph_path": true,
+        "forbidden_tokens_introduced": false,
+        "kernel_source_modified": false,
+        "patch_preview_only": "X:\\RTL-VT\\rtl-vt-kernel-bypass.patch",
+        "allowlist_exceptions": ["CREDITS", ".editorconfig", "arch/arm/boot/dts/**", "include/**/uapi/**"]
       },
       "remote_tracking": {
         "repository": "https://github.com/sultanaalyami/linux",
+        "branch": "master",
         "published_paths": [
           "docs/rtl-vt/artifact-manifest.json",
           "docs/rtl-vt/release-log.json",
           "docs/rtl-vt/kanban.json",
+          "docs/rtl-vt/visual-run-result.json",
           "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-decisive.png",
-          "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-evidence.json",
-          "docs/rtl-vt/screenshots/visual-run-result.json"
+          "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-decisive.ppm"
         ],
         "kanban_project": {
           "owner": "sultanaalyami",
           "project_number": 2,
           "project_id": "PVT_kwHOALnvxc4BRHAx",
-          "done_item_id": "PVTI_lAHOALnvxc4BRHAxzgqPlrA",
-          "todo_item_id": "PVTI_lAHOALnvxc4BRHAxzgqPlsI"
+          "status_field_id": "PVTSSF_lAHOALnvxc4BRHAxzg_CKeU",
+          "done_option_id": "98236657",
+          "todo_option_id": "f75ad846"
         }
       },
+      "supersedes": "rtl-vt-visual-proof-2026-04-17",
       "next_focus": [
-        "Tune Arabic glyph readability and stroke clarity for CLI usage.",
-        "Keep artifact hashes updated after each font/kernel revision.",
-        "Preserve all decisive screenshots and logs before any rebuild."
+        "Polish glyph legibility further (explore 16x16 or VGA 9x16 variant).",
+        "Extend decisive proof with a longer meaningful Arabic sentence.",
+        "Port the patch-preview kernel guard through a compile-time switch without altering vt.c directly."
       ]
+    },
+    {
+      "release_id": "rtl-vt-visual-proof-2026-04-17",
+      "timestamp": "2026-04-17T13:58:31+03:00",
+      "status": "superseded",
+      "summary": "First captured Arabic RTL screenshot with placeholder PSF; superseded by real Arabic font release."
     }
   ]
 }
+

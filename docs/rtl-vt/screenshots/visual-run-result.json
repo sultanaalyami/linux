@@ -1,0 +1,6 @@
+{
+  "evidence": "X:\\RTL-VT\\linux-rtl-extension-rtl-vt-v1-complete\\linux-rtl-extension-rtl-vt-v1-complete\\docs\\rtl-vt\\screenshots\\rtlvt-arabic-rtl-evidence.json",
+  "screenshot": "X:\\RTL-VT\\linux-rtl-extension-rtl-vt-v1-complete\\linux-rtl-extension-rtl-vt-v1-complete\\docs\\rtl-vt\\screenshots\\rtlvt-arabic-rtl-decisive.png",
+  "notes": "Decisive screenshot includes same Arabic byte line in RTL then LTR for visual direction proof",
+  "visual_run": "PASS"
+}

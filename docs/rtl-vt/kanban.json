@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "board": "rtl-vt-execution-board",
+  "updated_at": "2026-04-17T13:58:31+03:00",
+  "columns": {
+    "backlog": [
+      {
+        "id": "font-legibility-pass",
+        "title": "Improve Arabic font legibility for terminal use",
+        "owner": "rtl-vt",
+        "acceptance": "Arabic command-line text is easy to read at 8x16."
+      },
+      {
+        "id": "automated-vga-proof",
+        "title": "Add automated VGA byte-direction proof",
+        "owner": "rtl-vt",
+        "acceptance": "Machine-readable check confirms right-edge start in RTL mode."
+      }
+    ],
+    "in_progress": [
+      {
+        "id": "remote-doc-sync",
+        "title": "Publish release log and artifact manifest to remote repository",
+        "owner": "rtl-vt",
+        "acceptance": "Remote docs include latest release-log.json and artifact-manifest.json."
+      }
+    ],
+    "done": [
+      {
+        "id": "decisive-rtl-screenshot",
+        "title": "Capture decisive screenshot with Arabic RTL line",
+        "owner": "rtl-vt",
+        "evidence": "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-decisive.png"
+      },
+      {
+        "id": "rtl-ltr-comparison",
+        "title": "Render same Arabic byte line in RTL then LTR",
+        "owner": "rtl-vt",
+        "evidence": "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-evidence.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "visual_run": "PASS",
+  "ts": "2026-04-17T14:40:00+03:00",
+  "milestone": "real-arabic-font",
+  "screenshot": "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-decisive.png",
+  "screenshot_sha256": "68ae60765c0d9d2f92aca4d7479fdb6b00cf419ae148f8008e8c8026d4f94c15",
+  "screenshot_ppm_sha256": "ea252c6a488b7ac94b40e45c8fc42cb95ca3c50ac369acc69bf40f16fa5ec906",
+  "psf_sha256": "872b461257b6a86b45b86b235548a55bb932219da8b2c460c978b1a9f194dd6d",
+  "psf_size_bytes": 4128,
+  "psf_magic": "72b54a86",
+  "psf_format": "PSF2 v0, 256 glyphs, 8x16, charsize=16",
+  "source_font_ascii": "DejaVu Sans Mono Bold (raster)",
+  "source_font_arabic": "KacstOne Bold (raster, isolated forms)",
+  "phrase": "salaam arabi",
+  "phrase_bytes_logical": "0x53 0x47 0x48 0x4C 0x20 0x55 0x56 0x46 0x44",
+  "phrase_ascii_keys": "SGHL UVFD",
+  "phrase_arabic_reading_rtl": "س ل ا م   ع ر ب ي",
+  "rtl_active": true,
+  "rtl_evidence": {
+    "lines": 3,
+    "anchor": "right_edge",
+    "char_col_right": 78,
+    "char_col_left": 70,
+    "notes": "each phrase line occupies screen columns 70..78 (right-anchored); bytes were written in natural logical order and the kernel-side RTL mode laid them out reading right-to-left"
+  },
+  "notes": "Replaced placeholder PSF with TTF-rasterized glyphs (KacstOne Bold). Arabic letters s, l, a, m, ayn, r, b, y are visually distinct and readable. Kernel boot log suppressed via console=ttyS0 only + loglevel=0 + quiet so the VGA framebuffer stays clean for the proof."
+}

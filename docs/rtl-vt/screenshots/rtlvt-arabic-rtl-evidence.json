@@ -1,0 +1,17 @@
+{
+  "image": "X:\\RTL-VT\\linux-rtl-extension-rtl-vt-v1-complete\\linux-rtl-extension-rtl-vt-v1-complete\\docs\\rtl-vt\\screenshots\\rtlvt-arabic-rtl-decisive.ppm",
+  "resolution": {
+    "width": 720,
+    "height": 400
+  },
+  "non_black_pixels": 208,
+  "bbox": {
+    "min_x": 0,
+    "max_x": 717,
+    "min_y": 2,
+    "max_y": 62
+  },
+  "touches_left_edge": true,
+  "touches_right_edge": true,
+  "comparison_mode": "line1 RTL, line2 LTR (same Arabic bytes)"
+}

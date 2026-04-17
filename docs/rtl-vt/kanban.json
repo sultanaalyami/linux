@@ -8,7 +8,7 @@
         "id": "font-legibility-pass",
         "title": "Improve Arabic font legibility for terminal use",
         "owner": "rtl-vt",
-        "kanban_item_id": "PVTI_lAHOALnvxc4BRHAxzgqPjng",
+        "kanban_item_id": "PVTI_lAHOALnvxc4BRHAxzgqPlsI",
         "acceptance": "Arabic command-line text is easy to read at 8x16."
       },
       {
@@ -31,7 +31,7 @@
         "id": "decisive-rtl-screenshot",
         "title": "Capture decisive screenshot with Arabic RTL line",
         "owner": "rtl-vt",
-        "kanban_item_id": "PVTI_lAHOALnvxc4BRHAxzgqPjms",
+        "kanban_item_id": "PVTI_lAHOALnvxc4BRHAxzgqPlrA",
         "evidence": "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-decisive.png"
       },
       {

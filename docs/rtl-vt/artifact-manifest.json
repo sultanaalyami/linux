@@ -1,55 +1,54 @@
 {
-  "schema_version": "1.0",
-  "generated_at": "2026-04-17T13:58:31+03:00",
+  "schema_version": "1.1",
+  "generated_at": "2026-04-17T14:45:00+03:00",
+  "milestone": "real-arabic-font",
   "artifacts": [
     {
       "name": "decisive_screenshot_png",
       "relative_path": "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-decisive.png",
-      "absolute_path": "X:\\RTL-VT\\linux-rtl-extension-rtl-vt-v1-complete\\linux-rtl-extension-rtl-vt-v1-complete\\docs\\rtl-vt\\screenshots\\rtlvt-arabic-rtl-decisive.png",
-      "size": 1121,
-      "sha256": "3BC813F6DA819BE5EEDD00580FCE0DEAE50FD17305C01680F9323EBC4F6640EB"
+      "size": 1712,
+      "sha256": "68AE60765C0D9D2F92ACA4D7479FDB6B00CF419AE148F8008E8C8026D4F94C15"
     },
     {
       "name": "decisive_screenshot_ppm",
       "relative_path": "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-decisive.ppm",
-      "absolute_path": "X:\\RTL-VT\\linux-rtl-extension-rtl-vt-v1-complete\\linux-rtl-extension-rtl-vt-v1-complete\\docs\\rtl-vt\\screenshots\\rtlvt-arabic-rtl-decisive.ppm",
       "size": 864015,
-      "sha256": "C8428968BDD1D5ABB86DFC06573BDC20DDD5369337DBA2651BCE649C8B1658F2"
-    },
-    {
-      "name": "rtl_evidence_json",
-      "relative_path": "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-evidence.json",
-      "absolute_path": "X:\\RTL-VT\\linux-rtl-extension-rtl-vt-v1-complete\\linux-rtl-extension-rtl-vt-v1-complete\\docs\\rtl-vt\\screenshots\\rtlvt-arabic-rtl-evidence.json",
-      "size": 474,
-      "sha256": "377A8B9B1134F957490B3CA95F4E8013ABFAC713818D47CCF0A0EFC957959765"
-    },
-    {
-      "name": "visual_run_result",
-      "relative_path": "docs/rtl-vt/screenshots/visual-run-result.json",
-      "absolute_path": "X:\\RTL-VT\\linux-rtl-extension-rtl-vt-v1-complete\\linux-rtl-extension-rtl-vt-v1-complete\\docs\\rtl-vt\\screenshots\\visual-run-result.json",
-      "size": 476,
-      "sha256": "F3B43BA4A5B2F4923882FD60FB59CDC1984D3B612179590A5BE0666FC6974EF9"
-    },
-    {
-      "name": "qemu_serial_log",
-      "relative_path": "../../projects/rtl-vt-artifacts/qemu-serial.log",
-      "absolute_path": "X:\\RTL-VT\\projects\\rtl-vt-artifacts\\qemu-serial.log",
-      "size": 26044,
-      "sha256": "799E72F4E64B9BCD0DA47D438CB0214F920CE521589CA645A3E44EE3DB8565F0"
+      "sha256": "EA252C6A488B7AC94B40E45C8FC42CB95CA3C50AC369ACC69BF40F16FA5EC906"
     },
     {
       "name": "arabic_psf_font",
       "relative_path": "drivers/video/console/fonts/arab-rtl-kbd-8x16.psf",
-      "absolute_path": "X:\\RTL-VT\\linux-rtl-extension-rtl-vt-v1-complete\\linux-rtl-extension-rtl-vt-v1-complete\\drivers\\video\\console\\fonts\\arab-rtl-kbd-8x16.psf",
       "size": 4128,
-      "sha256": "122646DD81F06D09E54C7CF1C4FBC483961203745CB04F614DEB4AAE3C573CF1"
+      "sha256": "872B461257B6A86B45B86B235548A55BB932219DA8B2C460C978B1A9F194DD6D",
+      "format": "PSF2 v0, 256 glyphs, 8x16, KacstOne Bold raster"
+    },
+    {
+      "name": "psf_generator",
+      "relative_path": "tools/rtl-vt/generate_psf2.py",
+      "size": 6841,
+      "sha256": "A89FF9A96995E10FF2CB53032364E4F6FA1671DC095F69E4148E53A4DEE48B41"
+    },
+    {
+      "name": "ascii_arabic_table",
+      "relative_path": "docs/rtl-vt/ascii-arabic-table.txt",
+      "sha256": "2C8B106748A22E927741D55162A5479B6278F88C3884D6668DEC7B23D1B47354"
     },
     {
       "name": "kernel_bzImage",
       "relative_path": "arch/x86/boot/bzImage",
-      "absolute_path": "X:\\RTL-VT\\linux-rtl-extension-rtl-vt-v1-complete\\linux-rtl-extension-rtl-vt-v1-complete\\arch\\x86\\boot\\bzImage",
       "size": 14103552,
       "sha256": "B4EF1F698BE042A36405EA3232AB1B7533722789847C966184BA5D5B733FB026"
+    },
+    {
+      "name": "visual_run_result",
+      "relative_path": "docs/rtl-vt/visual-run-result.json"
     }
-  ]
+  ],
+  "phrase": {
+    "ascii_keys": "SGHL UVFD",
+    "bytes_hex": "0x53 0x47 0x48 0x4C 0x20 0x55 0x56 0x46 0x44",
+    "logical_reading_rtl": "salaam arabi",
+    "meaning": "Arabic peace / Hello Arabic"
+  },
+  "notes": "Supersedes placeholder PSF (122646DD...). New font rasterised from KacstOne Bold TTF via PIL at generate-time; runtime path remains byte-indexed only (no codepoint translation, no reordering, no contextual forms). RTL console rendering verified at right edge of VGA framebuffer."
 }

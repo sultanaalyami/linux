@@ -22,6 +22,24 @@
         ],
         "result_file": "docs/rtl-vt/screenshots/visual-run-result.json"
       },
+      "remote_tracking": {
+        "repository": "https://github.com/sultanaalyami/linux",
+        "published_paths": [
+          "docs/rtl-vt/artifact-manifest.json",
+          "docs/rtl-vt/release-log.json",
+          "docs/rtl-vt/kanban.json",
+          "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-decisive.png",
+          "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-evidence.json",
+          "docs/rtl-vt/screenshots/visual-run-result.json"
+        ],
+        "kanban_project": {
+          "owner": "sultanaalyami",
+          "project_number": 2,
+          "project_id": "PVT_kwHOALnvxc4BRHAx",
+          "done_item_id": "PVTI_lAHOALnvxc4BRHAxzgqPjms",
+          "todo_item_id": "PVTI_lAHOALnvxc4BRHAxzgqPjng"
+        }
+      },
       "next_focus": [
         "Tune Arabic glyph readability and stroke clarity for CLI usage.",
         "Keep artifact hashes updated after each font/kernel revision.",

@@ -29,6 +29,12 @@
       "sha256": "A89FF9A96995E10FF2CB53032364E4F6FA1671DC095F69E4148E53A4DEE48B41"
     },
     {
+      "name": "visual_runner_wsl",
+      "relative_path": "projects/rtl-vt-artifacts/visual_runner_wsl.sh",
+      "size": 7962,
+      "sha256": "CF0C82E19FCC2F77D7CDC4D4FD76CE4EDDCC52E0F77E95D2B42978DDEE0F8CA9"
+    },
+    {
       "name": "ascii_arabic_table",
       "relative_path": "docs/rtl-vt/ascii-arabic-table.txt",
       "sha256": "2C8B106748A22E927741D55162A5479B6278F88C3884D6668DEC7B23D1B47354"

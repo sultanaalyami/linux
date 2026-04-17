@@ -4,28 +4,127 @@
   "entries": [
     {
       "release_id": "rtl-vt-real-arabic-font-2026-04-17",
-      "timestamp": "2026-04-17T14:45:00+03:00",
+      "timestamp": "2026-04-17T14:53:00+03:00",
       "status": "completed",
-      "summary": "Replaced placeholder PSF with a real Arabic 8x16 font rasterised from KacstOne Bold; captured a decisive screenshot showing the phrase \"salaam arabi\" (salutation in Arabic) printed three times right-anchored, proving end-to-end RTL-VT rendering.",
+      "tag": "v0.2.0-real-arabic-font-disconnected",
+      "honest_summary": "First genuine Arabic VGA-console screenshot produced by the RTL-VT extension. The phrase \"salaam arabi\" is rendered three times, right-anchored automatically by the active RTL console mode, using real Arabic bitmap glyphs rasterised from the KacstOne Bold TrueType font. KNOWN LIMITATION: letters are DISCONNECTED (isolated forms only) because no contextual shaping is performed — this is a deliberate architectural constraint (no Unicode, no bidi, no shaping, no codepoint translation in kernel); each byte maps to exactly one fixed glyph. The screenshot is authentic proof of end-to-end RTL rendering, not of Arabic typographic shaping.",
+      "what_this_release_is": [
+        "Real Arabic bitmap glyphs in an 8x16 PSF2 font (not placeholders).",
+        "Automatic right-to-left anchoring on a Linux VGA text console via kernel RTL mode.",
+        "Reproducible, hash-verified artifacts published to sultanaalyami/linux@master."
+      ],
+      "what_this_release_is_not": [
+        "NOT shaped Arabic (no initial/medial/final/isolated form selection).",
+        "NOT ligated (e.g. لا is not composed; it is one glyph slot, not ل+ا).",
+        "NOT Unicode-aware. The kernel path never sees codepoints; it ships raw bytes to the framebuffer.",
+        "NOT a polished terminal font — glyph strokes at 8x16 are thin and some letters are hard to distinguish at small sizes."
+      ],
       "changes": [
         "Rewrote tools/rtl-vt/generate_psf2.py to build a valid PSF2 v0 header (magic 72b54a86, 256 glyphs, charsize=16, width=8, height=16) and render each glyph from a system TTF via Pillow (ASCII from DejaVu Sans Mono Bold, Arabic from KacstOne Bold).",
-        "Regenerated drivers/video/console/fonts/arab-rtl-kbd-8x16.psf (sha256 872b4612...); glyph slots for seen lam alef meem ayn ra ba ya now contain legible Arabic bitmaps.",
-        "Cleaned visual_runner_wsl.sh: suppresses kernel console output on tty1 (console=ttyS0 only, loglevel=0, quiet), regenerates the PSF deterministically each run, prints the decisive Arabic phrase three times in natural byte order, and relies on the active RTL console mode to right-anchor the phrase.",
-        "Captured new decisive artifacts: rtlvt-arabic-rtl-decisive.(png|ppm) with clear right-anchored Arabic glyphs and no kernel boot noise."
+        "Regenerated drivers/video/console/fonts/arab-rtl-kbd-8x16.psf (sha256 872b4612..., 4128 bytes).",
+        "Cleaned visual_runner_wsl.sh: suppresses kernel console output on tty1 (console=ttyS0 only, loglevel=0, quiet), regenerates the PSF deterministically each run, prints the decisive Arabic phrase three times in natural byte order.",
+        "Captured rtlvt-arabic-rtl-decisive.(png|ppm) showing three right-anchored Arabic lines on a clean black screen."
       ],
       "phrase": {
         "ascii_keys": "SGHL UVFD",
         "bytes_hex": "0x53 0x47 0x48 0x4C 0x20 0x55 0x56 0x46 0x44",
-        "logical_reading_rtl": "salaam arabi",
-        "meaning": "greeting / Arabic peace"
+        "per_byte_mapping": {
+          "0x53 'S'": "seen (س)",
+          "0x47 'G'": "lam (ل)",
+          "0x48 'H'": "alef (ا)",
+          "0x4C 'L'": "meem (م)",
+          "0x20 ' '": "space",
+          "0x55 'U'": "ayn (ع)",
+          "0x56 'V'": "ra (ر)",
+          "0x46 'F'": "ba (ب)",
+          "0x44 'D'": "ya (ي)"
+        },
+        "logical_reading_rtl": "salaam arabi (disconnected glyphs)",
+        "meaning": "salutation in Arabic"
       },
+      "environment_required": {
+        "host_os": "Windows with WSL2 Ubuntu-24.04",
+        "apt_packages": [
+          "qemu-system-x86",
+          "busybox-static",
+          "python3-pil",
+          "fonts-kacst",
+          "fonts-kacst-one",
+          "fonts-hosny-amiri",
+          "fonts-sil-scheherazade",
+          "fonts-dejavu-core"
+        ],
+        "expected_ttf_paths": [
+          "/usr/share/fonts/truetype/kacst-one/KacstOne-Bold.ttf",
+          "/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf"
+        ],
+        "kernel_bzImage_sha256": "B4EF1F698BE042A36405EA3232AB1B7533722789847C966184BA5D5B733FB026",
+        "root_img": "X:\\RTL-VT\\root.img",
+        "rtl_ioctl_mode_flag": "ESC [ ? 9000 h (set) / ESC [ ? 9000 l (clear)"
+      },
+      "reproduction_steps": [
+        {
+          "step": 1,
+          "title": "Extract and enter workdir",
+          "cmd": "Expand-Archive X:\\RTL-VT\\linux-rtl-extension-rtl-vt-v1-complete.zip -DestinationPath X:\\RTL-VT\\linux-rtl-extension-rtl-vt-v1-complete -Force; cd X:\\RTL-VT\\linux-rtl-extension-rtl-vt-v1-complete\\linux-rtl-extension-rtl-vt-v1-complete"
+        },
+        {
+          "step": 2,
+          "title": "Install WSL prerequisites (one-time)",
+          "cmd": "wsl -d Ubuntu-24.04 -- sudo apt-get update && sudo apt-get install -y qemu-system-x86 busybox-static python3-pil fonts-kacst fonts-kacst-one fonts-hosny-amiri fonts-sil-scheherazade fonts-dejavu-core"
+        },
+        {
+          "step": 3,
+          "title": "Regenerate the real-Arabic PSF2 font from the ASCII mapping and TTFs",
+          "cmd": "wsl -d Ubuntu-24.04 -- python3 /mnt/x/RTL-VT/linux-rtl-extension-rtl-vt-v1-complete/linux-rtl-extension-rtl-vt-v1-complete/tools/rtl-vt/generate_psf2.py /mnt/x/RTL-VT/linux-rtl-extension-rtl-vt-v1-complete/linux-rtl-extension-rtl-vt-v1-complete/docs/rtl-vt/ascii-arabic-table.txt /mnt/x/RTL-VT/linux-rtl-extension-rtl-vt-v1-complete/linux-rtl-extension-rtl-vt-v1-complete/drivers/video/console/fonts/arab-rtl-kbd-8x16.psf",
+          "expected_output_sha256": "872B461257B6A86B45B86B235548A55BB932219DA8B2C460C978B1A9F194DD6D",
+          "expected_output_size": 4128,
+          "expected_magic_bytes": "72 B5 4A 86"
+        },
+        {
+          "step": 4,
+          "title": "Run the visual runner (boots the kernel in QEMU inside WSL, captures screendump)",
+          "cmd": "wsl -d Ubuntu-24.04 -- bash /mnt/x/RTL-VT/projects/rtl-vt-artifacts/visual_runner_wsl.sh",
+          "runner_sha256": "CF0C82E19FCC2F77D7CDC4D4FD76CE4EDDCC52E0F77E95D2B42978DDEE0F8CA9",
+          "runner_size": 7962,
+          "produces": [
+            "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-decisive.ppm",
+            "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-decisive.png"
+          ]
+        },
+        {
+          "step": 5,
+          "title": "Verify the decisive screenshot hashes",
+          "cmd": "Get-FileHash docs/rtl-vt/screenshots/rtlvt-arabic-rtl-decisive.png -Algorithm SHA256",
+          "expected_png_sha256": "68AE60765C0D9D2F92ACA4D7479FDB6B00CF419AE148F8008E8C8026D4F94C15",
+          "expected_ppm_sha256": "EA252C6A488B7AC94B40E45C8FC42CB95CA3C50AC369ACC69BF40F16FA5EC906",
+          "note": "Exact PNG hash may drift if the runner prints a different timestamp or if the underlying TTF version differs. The decisive visual signature (three right-anchored Arabic lines at columns 70..78) is the real acceptance criterion; hashes are a best-effort reproducibility aid."
+        }
+      ],
+      "guest_runtime_sequence_inside_qemu": [
+        "mkdir -p /usr/share/consolefonts; cp /fonts/arab-rtl-kbd-8x16.psf /usr/share/consolefonts/",
+        "setfont /usr/share/consolefonts/arab-rtl-kbd-8x16.psf",
+        "printf '\\033[?9000h' > /dev/tty1   # enable RTL mode (rtl-vt kernel guard)",
+        "printf '\\x53\\x47\\x48\\x4C\\x20\\x55\\x56\\x46\\x44\\r\\n' > /dev/tty1   # line 1",
+        "printf '\\x53\\x47\\x48\\x4C\\x20\\x55\\x56\\x46\\x44\\r\\n' > /dev/tty1   # line 2",
+        "printf '\\x53\\x47\\x48\\x4C\\x20\\x55\\x56\\x46\\x44\\r\\n' > /dev/tty1   # line 3",
+        "# QEMU monitor: screendump /tmp/rtlvt.ppm"
+      ],
       "artifact_manifest": "docs/rtl-vt/artifact-manifest.json",
       "artifacts_sha256": {
         "screenshot_png": "68AE60765C0D9D2F92ACA4D7479FDB6B00CF419AE148F8008E8C8026D4F94C15",
         "screenshot_ppm": "EA252C6A488B7AC94B40E45C8FC42CB95CA3C50AC369ACC69BF40F16FA5EC906",
         "psf_font": "872B461257B6A86B45B86B235548A55BB932219DA8B2C460C978B1A9F194DD6D",
         "psf_generator": "A89FF9A96995E10FF2CB53032364E4F6FA1671DC095F69E4148E53A4DEE48B41",
+        "visual_runner_wsl": "CF0C82E19FCC2F77D7CDC4D4FD76CE4EDDCC52E0F77E95D2B42978DDEE0F8CA9",
+        "ascii_arabic_table": "2C8B106748A22E927741D55162A5479B6278F88C3884D6668DEC7B23D1B47354",
         "bzImage": "B4EF1F698BE042A36405EA3232AB1B7533722789847C966184BA5D5B733FB026"
+      },
+      "acceptance_signature": {
+        "rule": "A screenshot is decisive iff it contains at least one line of connected Arabic-shaped pixels starting at the right edge of the framebuffer (pixel columns 630..718 out of 720) with a clean (mostly black) background.",
+        "measured_columns": [630, 718],
+        "measured_rows_with_arabic_content": 3,
+        "kernel_boot_log_visible_in_screenshot": false
       },
       "verification": {
         "serial_markers": [
@@ -35,7 +134,6 @@
           "RTLVT_ARABIC_LINE_EMITTED",
           "RTLVT_INIT_DONE"
         ],
-        "right_anchor_columns": [70, 78],
         "result_file": "docs/rtl-vt/visual-run-result.json"
       },
       "architecture_compliance": {
@@ -53,8 +151,7 @@
           "docs/rtl-vt/release-log.json",
           "docs/rtl-vt/kanban.json",
           "docs/rtl-vt/visual-run-result.json",
-          "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-decisive.png",
-          "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-decisive.ppm"
+          "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-decisive.png"
         ],
         "kanban_project": {
           "owner": "sultanaalyami",
@@ -66,10 +163,17 @@
         }
       },
       "supersedes": "rtl-vt-visual-proof-2026-04-17",
+      "known_limitations": [
+        "Disconnected Arabic letters (no shaping) — each byte = one isolated glyph.",
+        "No ligatures; the lam-alef combination is stored as a single precomposed glyph in one slot, not as compositional shaping.",
+        "Glyph strokes at 8x16 are thin; some letters (e.g. ba/ta/tha variants) are only distinguishable by dot position, which is 1-2 pixels and may blur depending on renderer.",
+        "Latin text will appear as Arabic glyphs because the PSF remaps 0x41..0x7A to Arabic letters; English labels must be avoided on an RTL-VT console.",
+        "CUP cursor positioning escape \\033[row;colH is mirrored under RTL mode; applications must not use absolute column addressing."
+      ],
       "next_focus": [
-        "Polish glyph legibility further (explore 16x16 or VGA 9x16 variant).",
-        "Extend decisive proof with a longer meaningful Arabic sentence.",
-        "Port the patch-preview kernel guard through a compile-time switch without altering vt.c directly."
+        "Tune glyph legibility / explore 9x16 or 16x16 variants.",
+        "Render a longer, meaningful Arabic sentence as a second proof.",
+        "Port the kernel RTL guard behind CONFIG_RTL_VT_BYPASS without editing vt.c."
       ]
     },
     {

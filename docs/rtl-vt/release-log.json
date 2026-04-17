@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "project": "rtl-vt",
+  "entries": [
+    {
+      "release_id": "rtl-vt-visual-proof-2026-04-17",
+      "timestamp": "2026-04-17T13:58:31+03:00",
+      "status": "completed",
+      "summary": "Captured decisive Arabic RTL screenshot and stored reproducible evidence artifacts.",
+      "changes": [
+        "Updated visual_runner_wsl.sh to render one Arabic byte line in RTL mode and the same line in LTR mode for visual comparison.",
+        "Captured decisive screenshot files rtlvt-arabic-rtl-decisive.(ppm|png).",
+        "Generated rtlvt-arabic-rtl-evidence.json and updated visual-run-result.json."
+      ],
+      "artifact_manifest": "docs/rtl-vt/artifact-manifest.json",
+      "verification": {
+        "serial_markers": [
+          "RTLVT_RTL_LINE_DONE",
+          "RTLVT_LTR_LINE_DONE",
+          "RTLVT_ARABIC_LINE_EMITTED",
+          "RTLVT_INIT_DONE"
+        ],
+        "result_file": "docs/rtl-vt/screenshots/visual-run-result.json"
+      },
+      "next_focus": [
+        "Tune Arabic glyph readability and stroke clarity for CLI usage.",
+        "Keep artifact hashes updated after each font/kernel revision.",
+        "Preserve all decisive screenshots and logs before any rebuild."
+      ]
+    }
+  ]
+}

@@ -1,37 +1,58 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "board": "rtl-vt-execution-board",
-  "updated_at": "2026-04-17T13:58:31+03:00",
+  "updated_at": "2026-04-17T14:45:00+03:00",
   "columns": {
     "backlog": [
       {
-        "id": "font-legibility-pass",
-        "title": "Improve Arabic font legibility for terminal use",
+        "id": "longer-arabic-sentence",
+        "title": "Extend decisive proof with a longer meaningful Arabic sentence",
         "owner": "rtl-vt",
-        "kanban_item_id": "PVTI_lAHOALnvxc4BRHAxzgqPlsI",
-        "acceptance": "Arabic command-line text is easy to read at 8x16."
+        "acceptance": "Capture a second proof screenshot with >= 20 Arabic letters forming a complete sentence."
       },
       {
         "id": "automated-vga-proof",
         "title": "Add automated VGA byte-direction proof",
         "owner": "rtl-vt",
-        "acceptance": "Machine-readable check confirms right-edge start in RTL mode."
+        "acceptance": "Machine-readable check confirms right-edge start in RTL mode via VCS hex dump comparison."
+      },
+      {
+        "id": "kernel-guard-kconfig",
+        "title": "Port patch-preview kernel RTL guard behind a Kconfig option",
+        "owner": "rtl-vt",
+        "acceptance": "CONFIG_RTL_VT_BYPASS enables the guard without touching vt.c directly."
       }
     ],
     "in_progress": [
       {
-        "id": "remote-doc-sync",
-        "title": "Publish release log and artifact manifest to remote repository",
+        "id": "font-legibility-pass",
+        "title": "Tune Arabic glyph stroke clarity at 8x16 / explore 9x16 / 16x16 variants",
         "owner": "rtl-vt",
-        "acceptance": "Remote docs include latest release-log.json and artifact-manifest.json."
+        "kanban_item_id": "PVTI_lAHOALnvxc4BRHAxzgqPlsI",
+        "acceptance": "Every Arabic letter in the decisive phrase is distinguishable without zoom."
       }
     ],
     "done": [
       {
+        "id": "real-arabic-font",
+        "title": "Replace placeholder PSF with real Arabic 8x16 font (KacstOne Bold raster)",
+        "owner": "rtl-vt",
+        "kanban_item_id": "PVTI_lAHOALnvxc4BRHAxzgqPlrA",
+        "evidence": "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-decisive.png",
+        "artifacts": [
+          "drivers/video/console/fonts/arab-rtl-kbd-8x16.psf",
+          "tools/rtl-vt/generate_psf2.py",
+          "docs/rtl-vt/artifact-manifest.json",
+          "docs/rtl-vt/release-log.json",
+          "docs/rtl-vt/visual-run-result.json"
+        ],
+        "release_id": "rtl-vt-real-arabic-font-2026-04-17",
+        "phrase_rendered": "salaam arabi (right-anchored, 3 lines)"
+      },
+      {
         "id": "decisive-rtl-screenshot",
         "title": "Capture decisive screenshot with Arabic RTL line",
         "owner": "rtl-vt",
-        "kanban_item_id": "PVTI_lAHOALnvxc4BRHAxzgqPlrA",
         "evidence": "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-decisive.png"
       },
       {
@@ -39,7 +60,14 @@
         "title": "Render same Arabic byte line in RTL then LTR",
         "owner": "rtl-vt",
         "evidence": "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-evidence.json"
+      },
+      {
+        "id": "remote-doc-sync",
+        "title": "Publish release log and artifact manifest to remote repository",
+        "owner": "rtl-vt",
+        "evidence": "https://github.com/sultanaalyami/linux/tree/master/docs/rtl-vt"
       }
     ]
   }
 }
+

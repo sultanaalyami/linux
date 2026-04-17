@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-04-17T13:58:31+03:00",
+  "artifacts": [
+    {
+      "name": "decisive_screenshot_png",
+      "relative_path": "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-decisive.png",
+      "absolute_path": "X:\\RTL-VT\\linux-rtl-extension-rtl-vt-v1-complete\\linux-rtl-extension-rtl-vt-v1-complete\\docs\\rtl-vt\\screenshots\\rtlvt-arabic-rtl-decisive.png",
+      "size": 1121,
+      "sha256": "3BC813F6DA819BE5EEDD00580FCE0DEAE50FD17305C01680F9323EBC4F6640EB"
+    },
+    {
+      "name": "decisive_screenshot_ppm",
+      "relative_path": "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-decisive.ppm",
+      "absolute_path": "X:\\RTL-VT\\linux-rtl-extension-rtl-vt-v1-complete\\linux-rtl-extension-rtl-vt-v1-complete\\docs\\rtl-vt\\screenshots\\rtlvt-arabic-rtl-decisive.ppm",
+      "size": 864015,
+      "sha256": "C8428968BDD1D5ABB86DFC06573BDC20DDD5369337DBA2651BCE649C8B1658F2"
+    },
+    {
+      "name": "rtl_evidence_json",
+      "relative_path": "docs/rtl-vt/screenshots/rtlvt-arabic-rtl-evidence.json",
+      "absolute_path": "X:\\RTL-VT\\linux-rtl-extension-rtl-vt-v1-complete\\linux-rtl-extension-rtl-vt-v1-complete\\docs\\rtl-vt\\screenshots\\rtlvt-arabic-rtl-evidence.json",
+      "size": 474,
+      "sha256": "377A8B9B1134F957490B3CA95F4E8013ABFAC713818D47CCF0A0EFC957959765"
+    },
+    {
+      "name": "visual_run_result",
+      "relative_path": "docs/rtl-vt/screenshots/visual-run-result.json",
+      "absolute_path": "X:\\RTL-VT\\linux-rtl-extension-rtl-vt-v1-complete\\linux-rtl-extension-rtl-vt-v1-complete\\docs\\rtl-vt\\screenshots\\visual-run-result.json",
+      "size": 476,
+      "sha256": "F3B43BA4A5B2F4923882FD60FB59CDC1984D3B612179590A5BE0666FC6974EF9"
+    },
+    {
+      "name": "qemu_serial_log",
+      "relative_path": "../../projects/rtl-vt-artifacts/qemu-serial.log",
+      "absolute_path": "X:\\RTL-VT\\projects\\rtl-vt-artifacts\\qemu-serial.log",
+      "size": 26044,
+      "sha256": "799E72F4E64B9BCD0DA47D438CB0214F920CE521589CA645A3E44EE3DB8565F0"
+    },
+    {
+      "name": "arabic_psf_font",
+      "relative_path": "drivers/video/console/fonts/arab-rtl-kbd-8x16.psf",
+      "absolute_path": "X:\\RTL-VT\\linux-rtl-extension-rtl-vt-v1-complete\\linux-rtl-extension-rtl-vt-v1-complete\\drivers\\video\\console\\fonts\\arab-rtl-kbd-8x16.psf",
+      "size": 4128,
+      "sha256": "122646DD81F06D09E54C7CF1C4FBC483961203745CB04F614DEB4AAE3C573CF1"
+    },
+    {
+      "name": "kernel_bzImage",
+      "relative_path": "arch/x86/boot/bzImage",
+      "absolute_path": "X:\\RTL-VT\\linux-rtl-extension-rtl-vt-v1-complete\\linux-rtl-extension-rtl-vt-v1-complete\\arch\\x86\\boot\\bzImage",
+      "size": 14103552,
+      "sha256": "B4EF1F698BE042A36405EA3232AB1B7533722789847C966184BA5D5B733FB026"
+    }
+  ]
+}
